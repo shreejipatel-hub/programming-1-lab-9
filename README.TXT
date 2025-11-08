@@ -16,3 +16,9 @@ a test class that demonstrates some of the testing functionality. Testing is fur
 discussed in the book.
 
 NOTE: There are several serious errors to be found in these classes.
+
+14) the methods that are created automatically when we created a test class for comment are 
+	public void setUp
+	public void tearDown
+17) the option available to explore the details of the failed test is the show source which takes us directly to the line where the code is bugging.
+18)

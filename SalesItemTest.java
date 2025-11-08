@@ -1,7 +1,8 @@
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 
 /**
  * The test class SalesItemTest.
@@ -68,5 +69,32 @@ public class SalesItemTest
         SalesItem salesIte1 = new SalesItem("test name", 1000);
         assertEquals("test name", salesIte1.getName());
         assertEquals(1000, salesIte1.getPrice());
+    }
+    
+    @Test
+    public void testRejectDuplicateAuthor()
+    {
+        SalesItem salesIte1 = new SalesItem("Java For Idiots", 100);
+        String authorName = "Shreeji";
+        String comment = "Nice Product";
+        int rating = 5;
+        
+        boolean firstResult = salesIte1.addComment(authorName, "comment", rating);
+        
+        boolean secondResult = salesIte1.addComment(authorName, "Another comment", 4);
+        
+        assertTrue(firstResult, "The first comment should have been added");
+        assertFalse(secondResult, "The second comment from the same author should be rejected (return false).");
+        assertEquals(1, salesIte1.getNumberOfComments(), "The total number of comments should be 1.");
+        
+        
+    }
+    
+    @Test
+    public void negativeTestingOnRating()
+    {
+        SalesItem salesIte1 = new SalesItem("Java For Idiots", 100);
+        assertFalse(salesIte1.addComment("shreeji", "it's bad", 0));
+        assertFalse(salesIte1.addComment("Blah", "it's good", 6));
     }
 }
