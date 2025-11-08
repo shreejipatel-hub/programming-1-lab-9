@@ -39,4 +39,44 @@ public class CommentTest
     public void tearDown()
     {
     }
+    
+    @Test
+    public void testCommentCreation()
+    {
+        String expectedAuthor = "Shreeji";
+        int expectedRating = 4;
+        String commentText = "Noice!!";
+        
+        Comment comment = new Comment(expectedAuthor, commentText, expectedRating);
+        
+        assertEquals(expectedAuthor, comment.getAuthor(), "Author should be stored");
+        assertEquals(expectedRating, comment.getRating(), "Rating shoulld be stored");
+        assertEquals(0, comment.getVoteCount(), "Initial vote count should be 0");
+        
+    }
+    
+    @Test
+    public void testUpVoteComment()
+    {
+        Comment comment = new Comment("UpVote Tester", "Test Upvote", 3);
+        int initialVoteCount = comment.getVoteCount();
+        
+        comment.upvote();
+        comment.upvote();
+        
+        assertEquals(initialVoteCount + 2, comment.getVoteCount(),"Vote count should increase by 2");
+    }
+    
+    @Test
+    public void testDownVoteComment()
+    {
+        Comment comment = new Comment("downvote tester", "test downvote", 5);
+        int initialVoteCount = comment.getVoteCount();
+        
+        comment.downvote();
+        comment.downvote();
+        comment.downvote();
+        
+        assertEquals(initialVoteCount - 3, comment.getVoteCount(), "Vote count should decrease by 3.");
+    }
 }

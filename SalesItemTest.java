@@ -97,4 +97,40 @@ public class SalesItemTest
         assertFalse(salesIte1.addComment("shreeji", "it's bad", 0));
         assertFalse(salesIte1.addComment("Blah", "it's good", 6));
     }
+    
+    @Test
+    public void testFindMostHelpfulComment()
+    {
+        SalesItem salesIte1 = new SalesItem("Test helpful comment", 100);
+        
+        String authorA = "Evil Larry";
+        String authorB = "Oopy Goopy";
+        String authorC = "Mr boom";
+        
+        salesIte1.addComment(authorA, "it sucks!!", 5);
+        salesIte1.addComment(authorB, "It's alright kinda overrated", 5);
+        salesIte1.addComment(authorC, "It's the best", 5);
+        
+        salesIte1.upvoteComment(2);
+        salesIte1.upvoteComment(2);
+        
+        salesIte1.downvoteComment(0);
+        
+        Comment mostHelpful = salesIte1.findMostHelpfulComment();
+        
+        assertNotNull(mostHelpful, "methode returns a comment object");
+        assertEquals(authorC, mostHelpful.getAuthor(), "returned comment should be from Mr boom with 2 upvotes");
+        assertEquals(2, mostHelpful.getVoteCount(), "The winner's vote count should be 2");
+        
+    }
+    
+    @Test
+    public void testFindMostHelpfulCommentOnEmptyList()
+    {
+        SalesItem emptyItem = new SalesItem("Blah", 10);
+        Comment MostHelpful = emptyItem.findMostHelpfulComment();
+        
+        assertNull(MostHelpful, "methode should return null when comments list is empty");
+        
+    }
 }
