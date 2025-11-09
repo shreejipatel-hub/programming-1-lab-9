@@ -41,6 +41,14 @@ public class CommentTest
     }
     
     @Test
+    public void testMinimumAndMaximumRating()
+    {
+        SalesItem salesIte1 = new SalesItem("Java For Idiots", 100);
+        assertTrue(salesIte1.addComment("shreeji", "it's bad", 1));
+        assertTrue(salesIte1.addComment("Blah", "it's good", 5));
+    }
+    
+    @Test
     public void testCommentCreation()
     {
         String expectedAuthor = "Shreeji";

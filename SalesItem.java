@@ -140,6 +140,7 @@ public class SalesItem
                 best = current;
             }
         }
+        
         return best;
     }
     

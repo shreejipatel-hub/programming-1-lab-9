@@ -99,6 +99,35 @@ public class SalesItemTest
     }
     
     @Test
+    public void testTieBreaker()
+    {
+        SalesItem salesIte1 = new SalesItem("Cat",100);
+        String authorName = "Shreeji";
+        String comment = "i like cats";
+        int rating = 5;
+        String author2 = "Marinara";
+        String comment2 = "i like cats more";
+        int rating2 = 5;
+        
+        salesIte1.addComment(authorName, comment, rating);
+        salesIte1.addComment(author2, comment2, rating2);
+        
+        salesIte1.upvoteComment(0);
+        salesIte1.upvoteComment(0);
+        
+        salesIte1.upvoteComment(1);
+        salesIte1.upvoteComment(1);
+        
+        Comment tieWinner = salesIte1.findMostHelpfulComment();
+        
+        assertNotNull(tieWinner, "should return a comment object");
+        assertEquals(authorName, tieWinner.getAuthor(), "The winner should be the first author");
+        assertEquals(2, tieWinner.getVoteCount(), "the winner should have a vote count of 2");
+        
+    }
+    
+    
+    @Test
     public void testFindMostHelpfulComment()
     {
         SalesItem salesIte1 = new SalesItem("Test helpful comment", 100);
