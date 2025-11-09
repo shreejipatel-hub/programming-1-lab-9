@@ -21,4 +21,14 @@ NOTE: There are several serious errors to be found in these classes.
 	public void setUp
 	public void tearDown
 17) the option available to explore the details of the failed test is the show source which takes us directly to the line where the code is bugging.
-18)
+30)   public void equals()
+    {
+        if(previousOperator == '+') {
+            displayValue = leftOperand + displayValue;
+        }
+        else {
+            displayValue = leftOperand - displayValue;
+        }
+        leftOperand = 0;
+        previousOperator = ' ';
+    }
