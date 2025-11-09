@@ -1,17 +1,17 @@
 #BlueJ package file
-dependency1.from=SalesItem
-dependency1.to=Comment
+dependency1.from=CommentTest
+dependency1.to=SalesItem
 dependency1.type=UsesDependency
 dependency2.from=CommentTest
-dependency2.to=SalesItem
+dependency2.to=Comment
 dependency2.type=UsesDependency
-dependency3.from=CommentTest
-dependency3.to=Comment
+dependency3.from=SalesItemTest
+dependency3.to=SalesItem
 dependency3.type=UsesDependency
 dependency4.from=SalesItemTest
-dependency4.to=SalesItem
+dependency4.to=Comment
 dependency4.type=UsesDependency
-dependency5.from=SalesItemTest
+dependency5.from=SalesItem
 dependency5.to=Comment
 dependency5.type=UsesDependency
 editor.fx.0.height=822
